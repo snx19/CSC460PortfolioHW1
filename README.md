@@ -105,6 +105,22 @@ If you use separate CSS/JS files, include those as well. Zip all files together 
 
 ---
 
+## How To Run The Portfolio Locally
+
+From the project folder, start a simple local server:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open this URL in your browser:
+
+```text
+http://localhost:8000/portfolio.html
+```
+
+---
+
 ## Prompt Log Template
 
 Create a file called `prompt-log.md` and use this format:

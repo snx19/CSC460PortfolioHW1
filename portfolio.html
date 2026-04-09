@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayato Lopez — Web Development Portfolio</title>
+
+  <style>
+    /* ============================================
+       CSS RESET — Gives you a clean starting point
+       ============================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    nav {
+      background-color: #e8e8e8;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #0066cc;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero .tagline {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .hero-button {
+      display: inline-block;
+      background-color: white;
+      color: #667eea;
+      padding: 0.75rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ============================================
+       ABOUT SECTION
+       ============================================ */
+    .about {
+      background-color: white;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      max-width: 800px;
+    }
+
+    /* ============================================
+       PROJECTS SECTION
+       ============================================ */
+    .projects {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .projects h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .project-card p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-card-link {
+      display: inline-block;
+      background-color: #0066cc;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .project-card-link:hover {
+      background-color: #0052a3;
+    }
+
+    /* ============================================
+       CONTACT SECTION
+       ============================================ */
+    .contact {
+      background-color: white;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-error {
+      color: #d32f2f;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .form-error.show {
+      display: block;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea {
+      border-color: #d32f2f;
+    }
+
+    .submit-button {
+      background-color: #667eea;
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #5568d3;
+    }
+
+    .submit-button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .form-success {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    /* ============================================
+       PROJECT MODAL
+       ============================================ */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 1rem;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #333;
+      font-size: 1.8rem;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: #333;
+    }
+
+    .modal-body {
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .modal-body p {
+      margin-bottom: 1rem;
+    }
+
+    .modal-body h3 {
+      color: #667eea;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-body ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+
+    /* Tablet (768px and above) */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero .tagline {
+        font-size: 1.1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+    }
+
+    /* Mobile (375px and above) */
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 3rem 1rem;
+        min-height: 350px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero .tagline {
+        font-size: 1rem;
+      }
+
+      .about,
+      .projects,
+      .contact {
+        padding: 2rem 1rem;
+      }
+
+      .about h2,
+      .projects h2,
+      .contact h2 {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        gap: 0.5rem;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card-image {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <section class="hero" id="home">
+    <h1>Hayato Lopez</h1>
+    <p class="tagline">Full-Stack Web Developer | Building digital experiences</p>
+    <button class="hero-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+      View My Work
+    </button>
+  </section>
+
+  <!-- ==========================================
+       ABOUT SECTION
+       ========================================== -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate full-stack web developer with a focus on creating responsive, 
+      user-friendly applications. With experience in HTML, CSS, JavaScript, and modern 
+      frameworks, I specialize in building scalable web solutions that solve real-world 
+      problems. When I'm not coding, you'll find me exploring new technologies and 
+      contributing to open-source projects.
+    </p>
+  </section>
+
+  <!-- ==========================================
+       PROJECTS SECTION
+       ========================================== -->
+  <section class="projects" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <div class="project-card-image">📱</div>
+        <div class="project-card-content">
+          <h3>Task Manager App</h3>
+          <p>
+            A responsive task management application built with vanilla JavaScript, 
+            featuring real-time updates and local storage persistence.
+          </p>
+          <button class="project-card-link" data-project="0">View Project</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-image">🎨</div>
+        <div class="project-card-content">
+          <h3>Design System</h3>
+          <p>
+            A comprehensive CSS framework and component library used to accelerate 
+            development across multiple projects with consistent branding.
+          </p>
+          <button class="project-card-link" data-project="1">View Project</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-image">🌐</div>
+        <div class="project-card-content">
+          <h3>E-Commerce Platform</h3>
+          <p>
+            A full-stack e-commerce platform with product catalog, shopping cart, 
+            and payment integration built with modern web technologies.
+          </p>
+          <button class="project-card-link" data-project="2">View Project</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-image">📊</div>
+        <div class="project-card-content">
+          <h3>Analytics Dashboard</h3>
+          <p>
+            An interactive data visualization dashboard with real-time metrics, 
+            charts, and reporting capabilities for business intelligence.
+          </p>
+          <button class="project-card-link" data-project="3">View Project</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CONTACT SECTION
+       ========================================== -->
+  <section class="contact" id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-form">
+      <div class="form-success" id="successMessage">
+        Thank you! Your message has been sent successfully.
+      </div>
+      <form id="contactForm" novalidate>
+        
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Your full name"
+            required
+          />
+          <div class="form-error" id="nameError">Name is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="your.email@example.com"
+            required
+          />
+          <div class="form-error" id="emailError">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            placeholder="Write your message here (minimum 10 characters)..."
+            required
+          ></textarea>
+          <div class="form-error" id="messageError">Message must be at least 10 characters long</div>
+        </div>
+
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <p>&copy; 2024 Hayato Lopez. All rights reserved.</p>
+    <p>Built with HTML, CSS, and JavaScript</p>
+  </footer>
+
+  <!-- Project Details Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Project Title</h2>
+        <button class="close-modal" onclick="closeProjectModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content inserted by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // FORM VALIDATION
+    // ============================================
+
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    // Validation rules
+    const validators = {
+      name: (value) => {
+        return value.trim().length > 0;
+      },
+      email: (value) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(value);
+      },
+      message: (value) => {
+        return value.trim().length >= 10;
+      }
+    };
+
+    // Display error message
+    function showError(fieldName, show = true) {
+      const field = document.getElementById(fieldName);
+      const errorElement = document.getElementById(fieldName + 'Error');
+      const formGroup = field.closest('.form-group');
+
+      if (show) {
+        errorElement.classList.add('show');
+        formGroup.classList.add('error');
+      } else {
+        errorElement.classList.remove('show');
+        formGroup.classList.remove('error');
+      }
+    }
+
+    // Validate individual field
+    function validateField(fieldName) {
+      const field = document.getElementById(fieldName);
+      const isValid = validators[fieldName](field.value);
+      showError(fieldName, !isValid);
+      return isValid;
+    }
+
+    // Real-time validation on blur
+    ['name', 'email', 'message'].forEach(fieldName => {
+      document.getElementById(fieldName).addEventListener('blur', () => {
+        validateField(fieldName);
+      });
+    });
+
+    // Form submission
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Validate all fields
+      const isNameValid = validateField('name');
+      const isEmailValid = validateField('email');
+      const isMessageValid = validateField('message');
+
+      // If all valid, show success message
+      if (isNameValid && isEmailValid && isMessageValid) {
+        successMessage.classList.add('show');
+        contactForm.reset();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+
+        // Clear any error states
+        ['name', 'email', 'message'].forEach(fieldName => {
+          showError(fieldName, false);
+        });
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // ============================================
+    // PROJECT MODAL FUNCTIONALITY
+    // ============================================
+    const projectData = {
+      0: {
+        title: "Task Manager App",
+        description: "A responsive task management application built with vanilla JavaScript, featuring real-time updates and local storage persistence.",
+        details: [
+          { heading: "Technologies Used", items: ["HTML5", "CSS3", "Vanilla JavaScript", "Local Storage API"] },
+          { heading: "Key Features", items: ["Add, edit, and delete tasks", "Mark tasks as complete", "Filter by status", "Data persists between sessions"] },
+          { heading: "What I Learned", text: "This project taught me the importance of state management and how to effectively use browser APIs for data persistence." }
+        ]
+      },
+      1: {
+        title: "Design System",
+        description: "A comprehensive CSS framework and component library used to accelerate development across multiple projects with consistent branding.",
+        details: [
+          { heading: "Technologies Used", items: ["CSS3", "Flexbox", "CSS Grid", "CSS Variables"] },
+          { heading: "Key Features", items: ["Reusable component styles", "Consistent color palette", "Responsive utility classes", "Documentation and examples"] },
+          { heading: "What I Learned", text: "Building this system helped me focus on consistency, reusability, and scalable front-end architecture." }
+        ]
+      },
+      2: {
+        title: "E-Commerce Platform",
+        description: "A full-stack e-commerce platform with product catalog, shopping cart, and payment integration built with modern web technologies.",
+        details: [
+          { heading: "Technologies Used", items: ["React", "Node.js", "Express", "MongoDB", "Stripe"] },
+          { heading: "Key Features", items: ["Product filtering", "Shopping cart", "User auth", "Order management", "Payment checkout"] },
+          { heading: "What I Learned", text: "I gained practical full-stack experience and improved my skills in APIs, data flow, and secure transactions." }
+        ]
+      },
+      3: {
+        title: "Analytics Dashboard",
+        description: "An interactive data visualization dashboard with real-time metrics, charts, and reporting capabilities for business intelligence.",
+        details: [
+          { heading: "Technologies Used", items: ["React", "Chart.js", "D3.js", "WebSockets"] },
+          { heading: "Key Features", items: ["Real-time updates", "Interactive charts", "Custom reports", "Data export"] },
+          { heading: "What I Learned", text: "This project improved my understanding of data storytelling, visualization patterns, and dashboard performance." }
+        ]
+      }
+    };
+
+    function openProjectModal(projectId) {
+      const project = projectData[projectId];
+      const modal = document.getElementById('projectModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      if (!project || !modal || !modalTitle || !modalBody) {
+        return;
+      }
+
+      modalTitle.textContent = project.title;
+      modalBody.innerHTML = `<p><strong>${project.description}</strong></p>`;
+
+      project.details.forEach((detail) => {
+        if (detail.items) {
+          const items = detail.items.map((item) => `<li>${item}</li>`).join('');
+          modalBody.innerHTML += `<h3>${detail.heading}</h3><ul>${items}</ul>`;
+        } else if (detail.text) {
+          modalBody.innerHTML += `<h3>${detail.heading}</h3><p>${detail.text}</p>`;
+        }
+      });
+
+      modal.classList.add('show');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      if (modal) {
+        modal.classList.remove('show');
+      }
+    }
+
+    // Close modal when clicking outside content
+    window.addEventListener('click', (event) => {
+      const modal = document.getElementById('projectModal');
+      if (modal && event.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    // Open modal on button click
+    document.querySelectorAll('.project-card-link').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = button.getAttribute('data-project');
+        openProjectModal(projectId);
+      });
+    });
+  </script>
+
+</body>
+</html>
